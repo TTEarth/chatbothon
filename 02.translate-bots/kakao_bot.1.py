@@ -4,7 +4,7 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from flask import json
-from py_translator import Translator
+from googletrans import Translator
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ def message():
     data = json.loads(request.data)
     content = data["content"]
     translator = Translator()
-    translated = translator.translate(content, dest="en")
+    translated = translator.translate(content, dest="en", src="ko")
 
     response = {
         "message": {
